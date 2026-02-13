@@ -447,182 +447,117 @@
         </div>
       </section>
 
-
-
-
       <!-- Google reCAPTCHA Script -->
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-        <section class="contact-section">
-          <div class="container">
-            <h1 class="text-center pb-3 pt-3 text-primary">Contact</h1>
+      <section class="contact-section">
+        <div class="container">
+          <h1 class="text-center pb-3 pt-3 text-primary">Contact</h1>
 
-            <form id="contactForm"
-                  name="contact"
-                  method="POST"
-                  data-netlify="true"
-                  data-netlify-honeypot="bot-field"
-                  enctype="multipart/form-data"
-                  class="row g-3">
+          <form name="contact"
+                id="contactForm"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                enctype="multipart/form-data"
+                class="row g-3">
 
-              <!-- Netlify Hidden Input -->
-              <input type="hidden" name="form-name" value="contact">
+            <input type="hidden" name="form-name" value="contact">
 
-              <!-- Honeypot Anti-Spam -->
-              <p style="display:none;">
-                <label>Don’t fill this out:
-                  <input name="bot-field">
-                </label>
-              </p>
+            <p style="display:none;">
+              <label>Don’t fill this out:
+                <input name="bot-field">
+              </label>
+            </p>
 
-              <!-- Full Name -->
-              <div class="col-md-6">
-                <label class="form-label">Full Name *</label>
-                <input type="text"
-                      class="form-control"
-                      id="fullName"
-                      name="fullName"
-                      placeholder="Your Name"
-                      required>
-              </div>
+            <div class="col-md-6">
+              <label class="form-label">Full Name *</label>
+              <input type="text" class="form-control" name="fullName" id="fullName" required>
+            </div>
 
-              <!-- Email -->
-              <div class="col-md-6">
-                <label class="form-label">Email *</label>
-                <input type="email"
-                      class="form-control"
-                      id="email"
-                      name="email"
-                      placeholder="your@email.com"
-                      required>
-              </div>
+            <div class="col-md-6">
+              <label class="form-label">Email *</label>
+              <input type="email" class="form-control" name="email" id="email" required>
+            </div>
 
-              <!-- Phone -->
-              <div class="col-md-6">
-                <label class="form-label">Phone *</label>
-                <input type="tel"
-                      class="form-control"
-                      id="phone"
-                      name="phone"
-                      placeholder="+8801XXXXXXXXX"
-                      required>
-              </div>
+            <div class="col-md-6">
+              <label class="form-label">Phone *</label>
+              <input type="tel" class="form-control" name="phone" id="phone" required>
+            </div>
 
-              <!-- Subject -->
-              <div class="col-md-6">
-                <label class="form-label">Subject</label>
-                <input type="text"
-                      class="form-control"
-                      id="subject"
-                      name="subject"
-                      placeholder="Subject">
-              </div>
+            <div class="col-md-6">
+              <label class="form-label">Subject</label>
+              <input type="text" class="form-control" name="subject">
+            </div>
 
-              <!-- File Upload -->
-              <div class="col-12">
-                <label class="form-label">Upload File (Max 1MB)</label>
-                <input type="file"
-                      class="form-control"
-                      id="attachment"
-                      name="attachment"
-                      accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
-              </div>
+            <div class="col-12">
+              <label class="form-label">Upload File (Max 1MB)</label>
+              <input type="file" class="form-control" name="attachment" id="attachment">
+            </div>
 
-              <!-- Message -->
-              <div class="col-12">
-                <label class="form-label">Message</label>
-                <textarea class="form-control"
-                          id="message"
-                          name="message"
-                          rows="4"
-                          placeholder="Write your message"></textarea>
-              </div>
+            <div class="col-12">
+              <label class="form-label">Message</label>
+              <textarea class="form-control" name="message" rows="4"></textarea>
+            </div>
 
-              <!-- reCAPTCHA -->
-              <div class="col-12 mt-3">
-                <div class="g-recaptcha"
-                    data-sitekey="6LcGkmosAAAAADgqsK6cKqpwLB9anyCAv5giolyX"></div>
-              </div>
+            <div class="col-12 mt-3">
+              <div class="g-recaptcha"
+                data-sitekey="6LcGkmosAAAAADgqsK6cKqpwLB9anyCAv5giolyX"></div>
+            </div>
 
-              <!-- Submit -->
-              <div class="col-12 text-center mt-3">
-                <button type="submit" class="btn btn-primary">
-                  Submit Form
-                </button>
-              </div>
+            <div class="col-12 text-center mt-3">
+              <button type="submit" class="btn btn-primary">
+                Submit Form
+              </button>
+            </div>
 
-              <!-- Success Message -->
-              <div class="col-12 text-center mt-3">
-                <p id="successMessage"
-                  style="display:none; color:green; font-weight:bold;">
-                  ✅ Thank you! Your inquiry has been submitted successfully.
-                  We’ll contact you soon!
-                </p>
-              </div>
+          </form>
+        </div>
+      </section>
 
-            </form>
-          </div>
-        </section>
+      <script>
+      document.getElementById("contactForm").addEventListener("submit", function(e){
+        e.preventDefault();
 
+        const form = this;
+        const name = form.fullName.value.trim();
+        const email = form.email.value.trim();
+        const phone = form.phone.value.trim();
+        const fileInput = document.getElementById("attachment");
+        const recaptcha = grecaptcha.getResponse();
 
-        <!-- Validation + Netlify Submit Script -->
-        <script>
-          document.getElementById("contactForm").addEventListener("submit", function(e){
-            e.preventDefault();
+        if(name === "" || email === "" || phone === ""){
+          alert("Name, Email and Phone are required!");
+          return;
+        }
 
-            const form = this;
-            const name = document.getElementById("fullName").value.trim();
-            const email = document.getElementById("email").value.trim();
-            const phone = document.getElementById("phone").value.trim();
-            const fileInput = document.getElementById("attachment");
-            const recaptcha = grecaptcha.getResponse();
+        if(fileInput.files.length > 0){
+          if(fileInput.files[0].size > 1024 * 1024){
+            alert("File must be less than 1MB!");
+            return;
+          }
+        }
 
-            if(name === "" || email === "" || phone === ""){
-              alert("Name, Email and Phone are required!");
-              return;
-            }
+        if(recaptcha.length === 0){
+          alert("Please verify that you are not a robot!");
+          return;
+        }
 
-            if(!/^\S+@\S+\.\S+$/.test(email)){
-              alert("Please enter a valid email address!");
-              return;
-            }
+        fetch("/", {
+          method: "POST",
+          body: new FormData(form)
+        })
+        .then(() => {
+          alert("✅ Thank you! Your inquiry has been submitted successfully. We’ll contact you soon!");
+          form.reset();
+          grecaptcha.reset();
+        })
+        .catch(() => {
+          alert("❌ Something went wrong. Please try again.");
+        });
 
-            if(!/^\+?[0-9]{10,15}$/.test(phone)){
-              alert("Please enter a valid phone number!");
-              return;
-            }
-
-            if(fileInput.files.length > 0){
-              if(fileInput.files[0].size > 1024 * 1024){
-                alert("File must be less than 1MB!");
-                return;
-              }
-            }
-
-            if(recaptcha.length === 0){
-              alert("Please verify that you are not a robot!");
-              return;
-            }
-
-            const formData = new FormData(form);
-
-            fetch("/", {
-              method: "POST",
-              body: formData
-            })
-            .then(() => {
-              alert("✅ Thank you! Your inquiry has been submitted successfully. We’ll contact you soon!");
-              form.reset();
-              grecaptcha.reset();
-            })
-            .catch(() => {
-              alert("❌ Something went wrong. Please try again.");
-            });
-
-          });
-          </script>
-
-
+      });
+      </script>
 
 
 
@@ -645,7 +580,7 @@
     </script>
 
 
-    <!-- <script>
+    <script>
       const form = document.getElementById("contactForm");
 
       form.addEventListener("submit", function (event) {
@@ -662,7 +597,7 @@
           alert("✅ Thank you! Your inquiry has been submitted successfully. We’ll contact you soon!");
         }
       });
-    </script> -->
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js" integrity="sha512-HvOjJrdwNpDbkGJIG2ZNqDlVqMo77qbs4Me4cah0HoDrfhrbA+8SBlZn1KrvAQw7cILLPFJvdwIgphzQmMm+Pw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </body>
 </html>
