@@ -1,0 +1,67 @@
+.header img {
+    width: 50px;   
+}
+
+.header a {
+    color: aliceblue;
+    font-size: 20px;
+    text-transform: uppercase;
+    transition: .4s;
+}
+
+
+.header a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 4px;
+    background-color:#ffbd39;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: .5s;
+}
+
+.header a:hover:after {
+    width: calc(100% + 0px);
+}
+
+.header a:hover {
+    background: #ffbd39;
+}
+
+
+.carousel-item {
+    height:600px;
+}
+
+.card-imagess{
+    height: 274px;
+}
+.documents-section .box {
+    border-radius: 30px;
+}
+
+.gallery-section .box {
+    border-radius: 30px;
+}
+.contact-section .box {
+    border-radius: 30px;
+}
+.from {
+    width: 100%;
+}
+element.style {
+    width: 50%;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--lwa-dark);
+}
+footer a {
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
