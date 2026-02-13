@@ -69,162 +69,184 @@
     </section>
 
       
-    <!-- Google reCAPTCHA Script -->
-      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+      <!-- Google reCAPTCHA Script -->
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-      <section class="contact-section">
-        <div class="container">
-          <h1 class="text-center pb-3 pt-3 text-primary">Contact</h1>
+        <section class="contact-section">
+          <div class="container">
+            <h1 class="text-center pb-3 pt-3 text-primary">Contact</h1>
 
-          <form id="contactForm"
-                name="contact"
-                method="POST"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-                enctype="multipart/form-data"
-                class="row g-3">
+            <form id="contactForm"
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
+                  enctype="multipart/form-data"
+                  class="row g-3">
 
-            <!-- Netlify Hidden Input -->
-            <input type="hidden" name="form-name" value="contact">
+              <!-- Netlify Hidden Input -->
+              <input type="hidden" name="form-name" value="contact">
 
-            <!-- Honeypot Anti-Spam -->
-            <p style="display:none;">
-              <label>Don’t fill this out:
-                <input name="bot-field">
-              </label>
-            </p>
+              <!-- Honeypot Anti-Spam -->
+              <p style="display:none;">
+                <label>Don’t fill this out:
+                  <input name="bot-field">
+                </label>
+              </p>
 
-            <!-- Full Name (Required) -->
-            <div class="col-md-6">
-              <label class="form-label">Full Name *</label>
-              <input type="text"
-                    class="form-control"
-                    id="fullName"
-                    name="fullName"
-                    placeholder="Your Name"
-                    required>
-            </div>
+              <!-- Full Name -->
+              <div class="col-md-6">
+                <label class="form-label">Full Name *</label>
+                <input type="text"
+                      class="form-control"
+                      id="fullName"
+                      name="fullName"
+                      placeholder="Your Name"
+                      required>
+              </div>
 
-            <!-- Email (Required) -->
-            <div class="col-md-6">
-              <label class="form-label">Email *</label>
-              <input type="email"
-                    class="form-control"
-                    id="email"
-                    name="email"
-                    placeholder="your@email.com"
-                    required>
-            </div>
+              <!-- Email -->
+              <div class="col-md-6">
+                <label class="form-label">Email *</label>
+                <input type="email"
+                      class="form-control"
+                      id="email"
+                      name="email"
+                      placeholder="your@email.com"
+                      required>
+              </div>
 
-            <!-- Phone (Required) -->
-            <div class="col-md-6">
-              <label class="form-label">Phone *</label>
-              <input type="tel"
-                    class="form-control"
-                    id="phone"
-                    name="phone"
-                    placeholder="+8801XXXXXXXXX"
-                    required>
-            </div>
+              <!-- Phone -->
+              <div class="col-md-6">
+                <label class="form-label">Phone *</label>
+                <input type="tel"
+                      class="form-control"
+                      id="phone"
+                      name="phone"
+                      placeholder="+8801XXXXXXXXX"
+                      required>
+              </div>
 
-            <!-- Subject -->
-            <div class="col-md-6">
-              <label class="form-label">Subject</label>
-              <input type="text"
-                    class="form-control"
-                    id="subject"
-                    name="subject"
-                    placeholder="Subject">
-            </div>
+              <!-- Subject -->
+              <div class="col-md-6">
+                <label class="form-label">Subject</label>
+                <input type="text"
+                      class="form-control"
+                      id="subject"
+                      name="subject"
+                      placeholder="Subject">
+              </div>
 
-            <!-- File Upload (Max 1MB) -->
-            <div class="col-12">
-              <label class="form-label">Upload File (Max 1MB)</label>
-              <input type="file"
-                    class="form-control"
-                    id="attachment"
-                    name="attachment"
-                    accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
-            </div>
+              <!-- File Upload -->
+              <div class="col-12">
+                <label class="form-label">Upload File (Max 1MB)</label>
+                <input type="file"
+                      class="form-control"
+                      id="attachment"
+                      name="attachment"
+                      accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+              </div>
 
-            <!-- Message -->
-            <div class="col-12">
-              <label class="form-label">Message</label>
-              <textarea class="form-control"
-                        id="message"
-                        name="message"
-                        rows="4"
-                        placeholder="Write your message"></textarea>
-            </div>
+              <!-- Message -->
+              <div class="col-12">
+                <label class="form-label">Message</label>
+                <textarea class="form-control"
+                          id="message"
+                          name="message"
+                          rows="4"
+                          placeholder="Write your message"></textarea>
+              </div>
 
-            <!-- Google reCAPTCHA -->
-            <div class="col-12 mt-3">
-              <div class="g-recaptcha"
-                  data-sitekey="6LcGkmosAAAAADgqsK6cKqpwLB9anyCAv5giolyX"></div>
-            </div>
+              <!-- reCAPTCHA -->
+              <div class="col-12 mt-3">
+                <div class="g-recaptcha"
+                    data-sitekey="6LcGkmosAAAAADgqsK6cKqpwLB9anyCAv5giolyX"></div>
+              </div>
 
-            <!-- Submit Button -->
-            <div class="col-12 text-center mt-3">
-              <button type="submit"
-                      class="btn btn-primary">
-                Submit Form
-              </button>
-            </div>
+              <!-- Submit -->
+              <div class="col-12 text-center mt-3">
+                <button type="submit" class="btn btn-primary">
+                  Submit Form
+                </button>
+              </div>
 
-          </form>
-        </div>
-      </section>
+              <!-- Success Message -->
+              <div class="col-12 text-center mt-3">
+                <p id="successMessage"
+                  style="display:none; color:green; font-weight:bold;">
+                  ✅ Thank you! Your inquiry has been submitted successfully.
+                  We’ll contact you soon!
+                </p>
+              </div>
+
+            </form>
+          </div>
+        </section>
 
 
-      <!-- Validation Script -->
-      <script>
-      document.getElementById("contactForm").addEventListener("submit", function(e){
+        <!-- Validation + Netlify Submit Script -->
+        <script>
+        document.getElementById("contactForm").addEventListener("submit", function(e){
 
-        const name = document.getElementById("fullName").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const phone = document.getElementById("phone").value.trim();
-        const fileInput = document.getElementById("attachment");
-        const recaptcha = grecaptcha.getResponse();
+          e.preventDefault(); // stop default redirect (no 404)
 
-        // Required check
-        if(name === "" || email === "" || phone === ""){
-          alert("Name, Email and Phone are required!");
-          e.preventDefault();
-          return;
-        }
+          const name = document.getElementById("fullName").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const phone = document.getElementById("phone").value.trim();
+          const fileInput = document.getElementById("attachment");
+          const recaptcha = grecaptcha.getResponse();
 
-        // Email validation
-        if(!/^\S+@\S+\.\S+$/.test(email)){
-          alert("Please enter a valid email address!");
-          e.preventDefault();
-          return;
-        }
-
-        // Phone validation (10-15 digits)
-        if(!/^\+?[0-9]{10,15}$/.test(phone)){
-          alert("Please enter a valid phone number!");
-          e.preventDefault();
-          return;
-        }
-
-        // File size validation (1MB)
-        if(fileInput.files.length > 0){
-          if(fileInput.files[0].size > 1024 * 1024){
-            alert("File must be less than 1MB!");
-            e.preventDefault();
+          // Required check
+          if(name === "" || email === "" || phone === ""){
+            alert("Name, Email and Phone are required!");
             return;
           }
-        }
 
-        // reCAPTCHA validation
-        if(recaptcha.length === 0){
-          alert("Please verify that you are not a robot!");
-          e.preventDefault();
-          return;
-        }
+          // Email validation
+          if(!/^\S+@\S+\.\S+$/.test(email)){
+            alert("Please enter a valid email address!");
+            return;
+          }
 
-      });
-      </script>
+          // Phone validation
+          if(!/^\+?[0-9]{10,15}$/.test(phone)){
+            alert("Please enter a valid phone number!");
+            return;
+          }
+
+          // File size validation (1MB)
+          if(fileInput.files.length > 0){
+            if(fileInput.files[0].size > 1024 * 1024){
+              alert("File must be less than 1MB!");
+              return;
+            }
+          }
+
+          // reCAPTCHA validation
+          if(recaptcha.length === 0){
+            alert("Please verify that you are not a robot!");
+            return;
+          }
+
+          // Submit to Netlify via fetch
+          const formData = new FormData(this);
+
+          fetch("/", {
+            method: "POST",
+            body: formData
+          })
+          .then(() => {
+            document.getElementById("successMessage").style.display = "block";
+            document.getElementById("contactForm").reset();
+            grecaptcha.reset();
+          })
+          .catch(() => {
+            alert("Error submitting form!");
+          });
+
+        });
+        </script>
+
 
 
 
