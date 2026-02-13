@@ -68,104 +68,85 @@
     </div>
     </section>
 
-<style>
-.custom-modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-}
+  <!-- reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-.custom-modal-content {
-  background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
-  width: 350px;
-}
+  
+<section class="contact-section">
+  <div class="container">
+    <h2 class="text-center mb-4">Contact</h2>
 
-.custom-modal-content button {
-  margin-top: 20px;
-  padding: 8px 20px;
-  border: none;
-  background: #198754;
-  color: white;
-  border-radius: 5px;
-}
-</style>
-</head>
+    <form name="contact"
+          id="contactForm"
+          method="POST"
+          action="/thank-you"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          enctype="multipart/form-data"
+          class="row g-3">
 
-<body>
+      <input type="hidden" name="form-name" value="contact">
 
-<div class="container mt-5">
+      <p style="display:none;">
+        <label>Don’t fill this out:
+          <input name="bot-field">
+        </label>
+      </p>
 
-<h2 class="text-center mb-4">Contact Form</h2>
+      <div class="col-md-6">
+        <input type="text" class="form-control" name="fullName" placeholder="Full Name" required>
+      </div>
 
-<form name="contact"
-      id="contactForm"
-      method="POST"
-      data-netlify="true"
-      enctype="multipart/form-data"
-      class="row g-3">
+      <div class="col-md-6">
+        <input type="email" class="form-control" name="email" placeholder="Email" required>
+      </div>
 
-<input type="hidden" name="form-name" value="contact">
+      <div class="col-md-6">
+        <input type="tel" class="form-control" name="phone" placeholder="Phone" required>
+      </div>
 
-<div class="col-md-6">
-<label class="form-label">Full Name *</label>
-<input type="text" class="form-control" name="fullName" required>
-</div>
+      <div class="col-md-6">
+        <input type="text" class="form-control" name="subject" placeholder="Subject">
+      </div>
 
-<div class="col-md-6">
-<label class="form-label">Email *</label>
-<input type="email" class="form-control" name="email" required>
-</div>
+      <div class="col-12">
+        <input type="file" class="form-control" name="attachment" id="attachment">
+      </div>
 
-<div class="col-md-6">
-<label class="form-label">Phone *</label>
-<input type="tel" class="form-control" name="phone" required>
-</div>
+      <div class="col-12">
+        <textarea class="form-control" name="message" rows="4" placeholder="Message"></textarea>
+      </div>
 
-<div class="col-md-6">
-<label class="form-label">Subject</label>
-<input type="text" class="form-control" name="subject">
-</div>
+      <div class="col-12">
+        <div class="g-recaptcha"
+          data-sitekey="6LcGkmosAAAAADgqsK6cKqpwLB9anyCAv5giolyX"></div>
+      </div>
 
-<div class="col-12">
-<label class="form-label">Upload File (Max 1MB)</label>
-<input type="file" class="form-control" name="attachment" id="attachment">
-</div>
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-success">
+          Submit
+        </button>
+      </div>
 
-<div class="col-12">
-<label class="form-label">Message</label>
-<textarea class="form-control" name="message" rows="4"></textarea>
-</div>
+    </form>
+  </div>
+</section>
 
-<div class="col-12 text-center">
-<button type="submit" class="btn btn-success">Submit</button>
-</div>
-
-</form>
-
-</div>
 
 <!-- Success Modal -->
 <div id="successModal" class="custom-modal">
   <div class="custom-modal-content">
-    <h4>Thank You So Much!</h4>
-    <p>You will get contacted very soon.</p>
-    <button onclick="closeModal()">OK</button>
+    <div class="check-icon">✔</div>
+    <h4>Thank you so much!</h4>
+    <p>We will contact you very soon.</p>
   </div>
 </div>
+
 
 <script>
 document.getElementById("contactForm").addEventListener("submit", function(e){
 
+  const form = this;
   const fileInput = document.getElementById("attachment");
 
   if(fileInput.files.length > 0){
@@ -176,16 +157,11 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
     }
   }
 
-  setTimeout(function(){
-    document.getElementById("successModal").style.display = "flex";
-  }, 700);
+  // Show modal before redirect
+  document.getElementById("successModal").style.display = "flex";
 
-});
-
-function closeModal(){
-  document.getElementById("successModal").style.display = "none";
-}
-</script>
+  });
+  </script>
 
 
     <footer class="bg-dark text-white py-2 mt-5">
